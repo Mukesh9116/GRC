@@ -1,1 +1,1 @@
-export const BASE_URL = "http://localhost:2411";
+export const BASE_URL = "https://grc-backend-qk0e.onrender.com";
