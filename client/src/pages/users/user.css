@@ -1,0 +1,12 @@
+@import '../admin/admin.css';
+
+.sidebar .logo-icon { background: #4d7466; box-shadow: 4px 4px 0 rgba(77,116,102,.28); }
+.sidebar .nav-link.active i { color: #4d7466; }
+.dashboard-card { border: 1px solid var(--line) !important; border-radius: 22px !important; box-shadow: 0 8px 0 #ebe5db !important; transition: transform .25s ease, box-shadow .25s ease; }
+.dashboard-card:hover { transform: translateY(-7px) rotate(.3deg); box-shadow: var(--shadow) !important; }
+.dashboard-card .card-body { padding: 2rem 1.5rem; }
+.dashboard-badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 8px 7px 15px; border-radius: 999px; background: var(--ink); color: #fff; font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 700; }
+.dashboard-badge span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #f4c36c; color: var(--ink); font-size: .9rem; font-weight: 700; }
+.dashboard-icon { font-size: 4rem; line-height: 1; }
+.dashboard-card h3 { font-size: 1.35rem; }
+.profile-photo { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: #dce7df; color: #4d7466; font-size: 2rem; }
