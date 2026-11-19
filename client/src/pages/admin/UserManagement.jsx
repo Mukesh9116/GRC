@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const UserManagement = () => {
   const [user, setUser] = useState([]);
@@ -11,7 +12,7 @@ const UserManagement = () => {
 
   const getUser = async () => {
     try {
-      const res = await axios.get("http://localhost:2411/api/user/show");
+      const res = await axios.get(`${BASE_URL}/api/user/show`);
       setUser(res.data.user || []);
     } catch (err) {
       console.log(err);
@@ -23,7 +24,7 @@ const UserManagement = () => {
 
   const handleBlock = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:2411/api/user/block/${id}`);
+      const res = await axios.put(`${BASE_URL}/api/user/block/${id}`);
       showToast(res.data.msg, "success");
       getUser();
     } catch (err) {

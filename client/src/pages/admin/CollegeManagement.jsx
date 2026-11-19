@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./admin.css";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const CollegeManagement = () => {
 
@@ -22,9 +23,9 @@ const CollegeManagement = () => {
     try {
       let res;
       if (mode) {
-        res = await axios.put(`http://localhost:2411/api/college/${mode}`, data)
+        res = await axios.put(`${BASE_URL}/api/college/${mode}`, data)
       } else {
-        res = await axios.post('http://localhost:2411/api/college/register', data)
+        res = await axios.post(`${BASE_URL}/api/college/register`, data)
       }
       console.log(res);
       showToast(mode ? "College updated successfully." : "College registered successfully.")
@@ -49,7 +50,7 @@ const CollegeManagement = () => {
 
   const handlefetch = async () => {
     try {
-      const res = await axios.get("http://localhost:2411/api/college/show");
+      const res = await axios.get(`${BASE_URL}/api/college/show`);
 
       console.log("Response:", res.data);
       console.log("College Array:", res.data.college);
@@ -78,7 +79,7 @@ const CollegeManagement = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:2411/api/college/${id}`)
+      await axios.delete(`${BASE_URL}/api/college/${id}`)
       showToast("College deleted successfully.")
       handlefetch()
     } catch (err) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const DiscussionForum = () => {
 
@@ -24,7 +25,7 @@ const DiscussionForum = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:2411/api/discussion/show"
+        `${BASE_URL}/api/discussion/show`
       );
 
       setDiscussion(res.data.discussions);
@@ -47,7 +48,7 @@ const DiscussionForum = () => {
       const token = localStorage.getItem("userToken");
 
       const res = await axios.post(
-        "http://localhost:2411/api/discussion/register",
+        `${BASE_URL}/api/discussion/register`,
         data,
         {
           headers: {

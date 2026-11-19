@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const Complaints = () => {
 
@@ -14,7 +15,7 @@ const Complaints = () => {
     try {
 
       const res = await axios.get(
-        `http://localhost:2411/api/complaint/show?status=${status}`
+        `${BASE_URL}/api/complaint/show?status=${status}`
       );
 
       console.log(res.data);
@@ -48,7 +49,7 @@ const Complaints = () => {
   try {
 
     const res = await axios.put(
-      `http://localhost:2411/api/complaint/updateStatus/${id}`,
+      `${BASE_URL}/api/complaint/updateStatus/${id}`,
       {
         status
       }

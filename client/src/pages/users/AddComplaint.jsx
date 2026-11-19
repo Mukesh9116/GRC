@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const AddComplaint = () => {
 
@@ -31,7 +32,7 @@ const AddComplaint = () => {
     const token = localStorage.getItem("userToken");
 
     const res = await axios.post(
-      "http://localhost:2411/api/complaint/register",
+      `${BASE_URL}/api/complaint/register`,
       {
         complaintType: data.complaintType,
         description: data.description
@@ -63,7 +64,7 @@ const AddComplaint = () => {
   const getComplaintTypes = async () => {
     try {
 
-      const res = await axios.get("http://localhost:2411/api/complaintType/show");
+      const res = await axios.get(`${BASE_URL}/api/complaintType/show`);
 
       setComplaintTypes(res.data.complaintType);
 

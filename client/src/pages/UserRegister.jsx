@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom'
 import logo from '../assets/cms.png'
 import ToastMessage from "../components/ToastMessage";
+import { BASE_URL } from "../config";
 
 const UserRegister = () => {
 
@@ -38,7 +39,7 @@ const UserRegister = () => {
 
   const fetchCollege = async () => {
     try {
-      const res = await axios.get("http://localhost:2411/api/college/show");
+      const res = await axios.get(`${BASE_URL}/api/college/show`);
       setCollege(res.data.college);
     } catch (err) {
       console.log(err);
@@ -47,7 +48,7 @@ const UserRegister = () => {
 
   const fetchSession = async () => {
     try {
-      const res = await axios.get("http://localhost:2411/api/session/show");
+      const res = await axios.get(`${BASE_URL}/api/session/show`);
       setSession(res.data.Session);
     } catch (err) {
       console.log(err);
@@ -66,7 +67,7 @@ const UserRegister = () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:2411/api/user/register",
+        `${BASE_URL}/api/user/register`,
         data
       );
 

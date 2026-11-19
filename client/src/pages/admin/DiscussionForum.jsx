@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const DiscussionForum = () => {
   const [discussion, setDiscussion] = useState([]);
@@ -9,13 +10,13 @@ const DiscussionForum = () => {
   const showToast = (message, type = "success") => setToast({ show: true, message, type });
 
   const getDiscussion = async () => {
-    try { const res = await axios.get("http://localhost:2411/api/discussion/show"); setDiscussion(res.data.discussions || []); }
+    try { const res = await axios.get(`${BASE_URL}/api/discussion/show`); setDiscussion(res.data.discussions || []); }
     catch (err) { console.log(err); showToast("Unable to load discussions.", "danger"); }
   };
   useEffect(() => { getDiscussion(); }, []);
 
   const deleteDiscussion = async (id) => {
-    try { const res = await axios.put(`http://localhost:2411/api/discussion/delete/${id}`); showToast(res.data.msg); getDiscussion(); }
+    try { const res = await axios.put(`${BASE_URL}/api/discussion/delete/${id}`); showToast(res.data.msg); getDiscussion(); }
     catch (err) { console.log(err); showToast("Unable to delete the discussion.", "danger"); }
   };
 

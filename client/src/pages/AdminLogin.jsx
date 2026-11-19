@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/cms.png'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../config'
 
 const AdminLogin = () => {
     const [data , setData ] = useState({
@@ -21,7 +22,7 @@ const AdminLogin = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const res = await axios.post('http://localhost:2411/api/admin/login',data)
+      const res = await axios.post(`${BASE_URL}/api/admin/login`,data)
       
       if(res.data.msg === "success"){
         localStorage.setItem("adminId",res.data.adminId)

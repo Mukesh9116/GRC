@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 const Profile = () => {
     // Start as null so we know when it's loading
@@ -10,7 +11,7 @@ const Profile = () => {
         try {
             const token = localStorage.getItem("userToken");
             const res = await axios.get(
-                "http://localhost:2411/api/user/profile",
+                `${BASE_URL}/api/user/profile`,
                 {
                     headers: {
                         authorization: token

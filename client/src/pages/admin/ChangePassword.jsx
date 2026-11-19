@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const ChangePassword = () => {
 
@@ -37,7 +38,7 @@ const ChangePassword = () => {
             const token = localStorage.getItem("adminToken");
 
             const res = await axios.put(
-                "http://localhost:2411/api/admin/changePassword",
+                `${BASE_URL}/api/admin/changePassword`,
                 {
                     oldPassword: data.oldPassword,
                     newPassword: data.newPassword

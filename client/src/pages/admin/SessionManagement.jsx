@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./admin.css";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const SessionManagement = () => {
 
@@ -29,10 +30,10 @@ const SessionManagement = () => {
         try {
             let res;
             if (mode) {
-                res = await axios.put(`http://localhost:2411/api/session/${mode}`, data);
+                res = await axios.put(`${BASE_URL}/api/session/${mode}`, data);
             } else {
                 res = await axios.post(
-                    "http://localhost:2411/api/session/register",
+                    `${BASE_URL}/api/session/register`,
                     data
                 );
             }
@@ -59,7 +60,7 @@ const SessionManagement = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:2411/api/session/show"
+                `${BASE_URL}/api/session/show`
             );
 
             console.log(res.data);
@@ -86,7 +87,7 @@ const SessionManagement = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:2411/api/session/${id}`);
+            await axios.delete(`${BASE_URL}/api/session/${id}`);
             showToast("Session deleted successfully.");
             handleFetch();
         } catch (err) {

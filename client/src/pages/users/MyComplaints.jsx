@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 const MyComplaints = () => {
 
@@ -12,7 +13,7 @@ const MyComplaints = () => {
       const token = localStorage.getItem("userToken");
 
       const res = await axios.get(
-        "http://localhost:2411/api/complaint/myComplaint",
+        `${BASE_URL}/api/complaint/myComplaint`,
         {
           headers: {
             authorization: token

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/cms.png";
 import ToastMessage from "../components/ToastMessage";
+import { BASE_URL } from "../config";
 
 const UserLogin = () => {
 
@@ -28,7 +29,7 @@ const UserLogin = () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:2411/api/user/login",
+        `${BASE_URL}/api/user/login`,
         data
       );
 

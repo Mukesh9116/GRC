@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const BlockedUser = () => {
   const [user, setUser] = useState([]);
@@ -9,13 +10,13 @@ const BlockedUser = () => {
   const showToast = (message, type = "success") => setToast({ show: true, message, type });
 
   const getUser = async () => {
-    try { const res = await axios.get("http://localhost:2411/api/user/blocked"); setUser(res.data.user || []); }
+    try { const res = await axios.get(`${BASE_URL}/api/user/blocked`); setUser(res.data.user || []); }
     catch (err) { console.log(err); showToast("Unable to load blocked users.", "danger"); }
   };
   useEffect(() => { getUser(); }, []);
 
   const handleUnblock = async (id) => {
-    try { const res = await axios.put(`http://localhost:2411/api/user/block/${id}`); showToast(res.data.msg); getUser(); }
+    try { const res = await axios.put(`${BASE_URL}/api/user/block/${id}`); showToast(res.data.msg); getUser(); }
     catch (err) { console.log(err); showToast("Unable to unblock the user.", "danger"); }
   };
 

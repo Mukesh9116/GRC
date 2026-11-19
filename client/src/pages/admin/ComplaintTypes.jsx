@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./admin.css";
 import axios from "axios";
 import ToastMessage from "../../components/ToastMessage";
+import { BASE_URL } from "../../config";
 
 const ComplaintTypes = () => {
 
@@ -31,10 +32,10 @@ const ComplaintTypes = () => {
 
             let res;
             if (mode) {
-                res = await axios.put(`http://localhost:2411/api/complaintType/${mode}`, data);
+                res = await axios.put(`${BASE_URL}/api/complaintType/${mode}`, data);
             } else {
                 res = await axios.post(
-                    "http://localhost:2411/api/complaintType/register",
+                    `${BASE_URL}/api/complaintType/register`,
                     data
                 );
             }
@@ -63,7 +64,7 @@ const ComplaintTypes = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:2411/api/complaintType/show"
+                `${BASE_URL}/api/complaintType/show`
             );
 
             console.log("Response:", res.data);
@@ -98,7 +99,7 @@ const ComplaintTypes = () => {
         }
 
         try {
-            await axios.delete(`http://localhost:2411/api/complaintType/${id}`);
+            await axios.delete(`${BASE_URL}/api/complaintType/${id}`);
             showToast("Complaint type deleted successfully.");
             handleFetch();
         } catch (err) {

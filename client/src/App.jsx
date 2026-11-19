@@ -20,10 +20,6 @@ import Complaints from './pages/admin/Complaints';
 import AdminDiscussionForum from "./pages/admin/DiscussionForum";
 import BlockedUser from './pages/admin/BlockedUser';
 import ChangePassword from './pages/admin/ChangePassword';
-
-
-
-
 import UserDashboard from "./pages/users/UserDashboard";
 import UserHome from "./pages/users/UserHome";
 import AddComplaint from "./pages/users/AddComplaint";
@@ -32,6 +28,7 @@ import DiscussionForum from "./pages/users/DiscussionForum";
 import UpdateProfile from "./pages/users/Profile";
 import ChangePasswordUser from "./pages/users/ChangePassword";
 import UserLogout from "./pages/users/Logout";
+
 
 const App = () => {
   return (

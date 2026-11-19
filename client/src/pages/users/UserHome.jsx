@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 const UserHome = () => {
 
@@ -18,7 +19,7 @@ const UserHome = () => {
       const token = localStorage.getItem("userToken");
 
       const res = await axios.get(
-        "http://localhost:2411/api/user/dashboard",
+        `${BASE_URL}/api/user/dashboard`,
         {
           headers: {
             authorization: token
